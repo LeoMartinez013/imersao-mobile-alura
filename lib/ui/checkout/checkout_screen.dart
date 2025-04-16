@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/model/dish.dart';
 import 'package:myapp/ui/_core/bag_provider.dart';
+import 'package:myapp/ui/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -68,6 +69,20 @@ class CheckoutScreen extends StatelessWidget {
                     );
                   },
                 ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<BagProvider>().clearBag();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomeScreen();
+                      },
+                    ),
+                  );
+                },
+                child: Text("Finalizar pedido."),
               ),
             ],
           ),
